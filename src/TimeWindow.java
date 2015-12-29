@@ -19,6 +19,7 @@ public class TimeWindow {
 
 	private LocalDate start;
 	private LocalDate end;
+	List<LocalDate> totalDates;
 	
 	public TimeWindow(String startDateInput, String endDateInput)
 	{
@@ -28,22 +29,35 @@ public class TimeWindow {
 	
 	public List<LocalDate> getListOfDates()
 	{
-		List<LocalDate> totalDates = new ArrayList<>();
+		totalDates = new ArrayList<>();
 		while (!start.isAfter(end))
 		{
 			totalDates.add(start);
 			//start.getDayOfWeek();
-			System.out.println(start + " "+ start.getDayOfWeek());
+			//System.out.println(start + " "+ start.getDayOfWeek());
 			start = start.plusDays(1);
 		}
 		
 		return totalDates;
 	}
 	
+	public String toString()
+	{
+		String output = "";
+		for (LocalDate ls : totalDates)
+		{
+			output += (ls + " "+ ls.getDayOfWeek() +"\n");
+		//	System.out.println(ls + " "+ ls.getDayOfWeek());
+		}
+		return output;
+	}
+	
+	
 	public static void main(String arg[])
 	{
 		TimeWindow tw = new TimeWindow("2015-10-01", "2015-10-04");
 		tw.getListOfDates();
+		System.out.print(tw);
 	}
 }
 

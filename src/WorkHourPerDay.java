@@ -1,5 +1,6 @@
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
@@ -13,13 +14,14 @@ import java.util.List;
  *
  */
 
-public class WorkHourPerDay {
+public class WorkHourPerDay extends Employee {
 
 	final private double regularDailyWorkHour = (long) 8;
 	
 	private int year;
 	private int month;
 	private int date;
+	private DayOfWeek dayOfWeek;
 	private double workHour;
 	private double overTimeHour;
 	
@@ -27,10 +29,12 @@ public class WorkHourPerDay {
 	{
 		// input date must be in format of MM-dd-yyyy
 		//LocalDate workDate = LocalDate.parse(date);
-		
+		super();
 		this.year = date.getYear();
 		this.month = date.getMonthValue();
 		this.date = date.getDayOfMonth();
+		this.dayOfWeek = date.getDayOfWeek();
+		
 		
 		// set work hour
 		this.workHour = workHour;
@@ -70,10 +74,18 @@ public class WorkHourPerDay {
 		}
 	}
 	
-	public static void main(String[] args)
+	public String toString()
 	{
-		WorkHourPerDay wh = new WorkHourPerDay("2015-11-28", 9.25);
-		System.out.println("Year: "+ wh.year + " Month: " + wh.month +" Date: " + wh.date);
-		System.out.println("WorkHR " + wh.workHour + " OT HR: "+ wh.overTimeHour);
+		String a = "Year: "+ this.year + " Month: " + this.month +" Date: " + this.date + " " + this.dayOfWeek;
+		String b = " || Work HR " + this.workHour + " OT HR: "+ this.overTimeHour;
+		
+		return a + b;
 	}
+	
+//	public static void main(String[] args)
+//	{
+//		WorkHourPerDay wh = new WorkHourPerDay("2015-11-28", 9.25);
+//		System.out.println("Year: "+ wh.year + " Month: " + wh.month +" Date: " + wh.date);
+//		System.out.println(" WorkHR " + wh.workHour + " OT HR: "+ wh.overTimeHour);
+//	}
 }
