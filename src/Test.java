@@ -8,6 +8,9 @@ public class Test {
 
 	public static void main(String[] args)
 	{
+		DisplayMenu dm = new DisplayMenu();
+		dm.DisplayMenu();
+		
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("Please enter desired start date in format of YYYY-MM-DD (Ex: 2015-11-28)");

@@ -31,7 +31,6 @@ public class EmployeeWkHr implements Serializable{
 	{
 		// input date must be in format of MM-dd-yyyy
 		//LocalDate workDate = LocalDate.parse(date);
-		super();
 		this.employeeName = employeeName;
 		this.year = date.getYear();
 		this.month = date.getMonthValue();
@@ -53,6 +52,10 @@ public class EmployeeWkHr implements Serializable{
 		}
 	}
 	
+	public EmployeeWkHr(String employeeName) 
+	{
+		this.employeeName = employeeName;
+	}
 	
 	public EmployeeWkHr(String date, double workHour) 
 	{
@@ -85,6 +88,64 @@ public class EmployeeWkHr implements Serializable{
 		
 		return a + b + c;
 	}
+
+	public String getEmployeeName() {
+		return employeeName;
+	}
+
+	public void setEmployeeName(String employeeName) {
+		this.employeeName = employeeName;
+	}
+
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+
+	public int getMonth() {
+		return month;
+	}
+
+	public void setMonth(int month) {
+		this.month = month;
+	}
+
+	public int getDate() {
+		return date;
+	}
+
+	public void setDate(int date) {
+		this.date = date;
+	}
+
+	public DayOfWeek getDayOfWeek() {
+		return dayOfWeek;
+	}
+
+	public void setDayOfWeek(DayOfWeek dayOfWeek) {
+		this.dayOfWeek = dayOfWeek;
+	}
+
+	public double getWorkHour() {
+		return workHour;
+	}
+
+	public void setWorkHour(double workHour) {
+		this.workHour = workHour;
+	}
+
+	public double getOverTimeHour() {
+		return overTimeHour;
+	}
+
+	public void setOverTimeHour(double overTimeHour) {
+		this.overTimeHour = overTimeHour;
+	}
+	
+	
 	
 //	public static void main(String[] args)
 //	{
