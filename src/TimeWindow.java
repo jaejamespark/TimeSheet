@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.TimeZone;
 
@@ -19,7 +20,7 @@ public class TimeWindow {
 
 	private LocalDate start;
 	private LocalDate end;
-	List<LocalDate> totalDates;
+	LinkedList<LocalDate> totalDates;
 	
 	public TimeWindow(String startDateInput, String endDateInput)
 	{
@@ -27,9 +28,9 @@ public class TimeWindow {
 		this.end = LocalDate.parse(endDateInput);
 	}
 	
-	public List<LocalDate> getListOfDates()
+	public LinkedList<LocalDate> getListOfDates()
 	{
-		totalDates = new ArrayList<>();
+		totalDates = new LinkedList<>();
 		while (!start.isAfter(end))
 		{
 			totalDates.add(start);

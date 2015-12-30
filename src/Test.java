@@ -1,27 +1,14 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Employee {
+public class Test {
 
-	private String name;
-	
-	public Employee(String name) 
-	{
-		this.name = name;
-
-	}
-	
-	public Employee(){
-		
-	}
-	
 	public static void main(String[] args)
 	{
 		Scanner sc = new Scanner(System.in);
-	
-		Employee employee = new Employee("jae");
 		
 		System.out.println("Please enter desired start date in format of YYYY-MM-DD (Ex: 2015-11-28)");
 		String start = sc.nextLine();
@@ -29,28 +16,38 @@ public class Employee {
 		String end = sc.nextLine();
 		
 		TimeWindow tw = new TimeWindow(start, end);
-		//tw.getListOfDates();
-	//	System.out.print(tw);
 		
-		List<LocalDate> timeList = tw.getListOfDates();
-		List<WorkHourPerDay> workHrList = new ArrayList<WorkHourPerDay>();
+		LinkedList<LocalDate> timeList = tw.getListOfDates();
+		LinkedList<EmployeeWkHr> workHrList = new LinkedList<EmployeeWkHr>();
 		
-		//workHrList.add(0, employee.name);
 		for (LocalDate ld : timeList)
 		{
 			System.out.println("Enter work hour for " + ld.toString());
 			double input = sc.nextDouble();
 			
 			
-			WorkHourPerDay workHrObj = new WorkHourPerDay(ld, input);
+			EmployeeWkHr workHrObj = new EmployeeWkHr("Jae", ld, input);
 			workHrList.add(workHrObj);
 		}
 		
-		for (WorkHourPerDay wd : workHrList)
+		Serializer sz = new Serializer();
+		sz.serializeWorkHourData(workHrList);
+		
+		for (EmployeeWkHr wd : workHrList)
+		{
+			System.out.println(wd);
+		}
+		
+		
+		System.out.println("deserilizing...");
+		
+		Deserializer ds = new Deserializer();
+		LinkedList<EmployeeWkHr> workHrFromData = ds.deserialize();
+		
+		for (EmployeeWkHr wd : workHrFromData)
 		{
 			System.out.println(wd);
 		}
 		
 	}
-	
 }

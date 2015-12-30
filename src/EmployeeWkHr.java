@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
@@ -8,16 +9,17 @@ import java.util.List;
 
 
 /**
- * This object contains work hours and overtime hours on a corresponding date
- * (Ex: 12-28-2015 WorkHour: 10Hr OverTimeHour: 2Hr)
+ * This object contains employee name, work hours, and overtime hours on a corresponding date
+ * (Ex: Jae 12-28-2015 WorkHour: 10Hr OverTimeHour: 2Hr)
  * @author cycas
  *
  */
 
-public class WorkHourPerDay extends Employee {
+public class EmployeeWkHr implements Serializable{
 
 	final private double regularDailyWorkHour = (long) 8;
 	
+	private String employeeName;
 	private int year;
 	private int month;
 	private int date;
@@ -25,11 +27,12 @@ public class WorkHourPerDay extends Employee {
 	private double workHour;
 	private double overTimeHour;
 	
-	public WorkHourPerDay(LocalDate date, double workHour) 
+	public EmployeeWkHr(String employeeName, LocalDate date, double workHour) 
 	{
 		// input date must be in format of MM-dd-yyyy
 		//LocalDate workDate = LocalDate.parse(date);
 		super();
+		this.employeeName = employeeName;
 		this.year = date.getYear();
 		this.month = date.getMonthValue();
 		this.date = date.getDayOfMonth();
@@ -51,7 +54,7 @@ public class WorkHourPerDay extends Employee {
 	}
 	
 	
-	public WorkHourPerDay(String date, double workHour) 
+	public EmployeeWkHr(String date, double workHour) 
 	{
 		// input date must be in format of MM-dd-yyyy
 		LocalDate workDate = LocalDate.parse(date);
@@ -76,10 +79,11 @@ public class WorkHourPerDay extends Employee {
 	
 	public String toString()
 	{
-		String a = "Year: "+ this.year + " Month: " + this.month +" Date: " + this.date + " " + this.dayOfWeek;
-		String b = " || Work HR " + this.workHour + " OT HR: "+ this.overTimeHour;
+		String a = "Employee Name: " + employeeName;
+		String b = " Year: "+ this.year + " Month: " + this.month +" Date: " + this.date + " " + this.dayOfWeek;
+		String c = " || Work HR " + this.workHour + " OT HR: "+ this.overTimeHour;
 		
-		return a + b;
+		return a + b + c;
 	}
 	
 //	public static void main(String[] args)
