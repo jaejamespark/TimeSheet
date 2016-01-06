@@ -4,15 +4,20 @@ import java.io.FilterOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.LinkedList;
+import java.util.Scanner;
 
 public class Serializer {
-
-	public void serializeWorkHourData(LinkedList<EmployeeWkHr> workHourListData)
+	
+	public void serializeEmployeeData(Employee employee, String employeeName)
 	{
+			
 		try {
-			FileOutputStream fout = new FileOutputStream("data/workHourData.ser");
+			
+			FileOutputStream fout = new FileOutputStream("data/Data.ser");
+			//FileOutputStream fout = new FileOutputStream("data/" + employeeName + "_Data.ser");
+			
 			ObjectOutputStream oos = new ObjectOutputStream(fout);
-			oos.writeObject(workHourListData);
+			oos.writeObject(employee);
 			oos.close();
 			System.out.println("Done");
 			

@@ -15,7 +15,7 @@ import java.util.List;
  *
  */
 
-public class EmployeeWkHr implements Serializable{
+public class EmployeeWkHr {
 
 	final private double regularDailyWorkHour = (long) 8;
 	
@@ -35,6 +35,7 @@ public class EmployeeWkHr implements Serializable{
 		this.date = 0;
 		this.dayOfWeek = null;
 		this.workHour = 0;
+		this.localDate = null;
 		
 		// calculate overtime if worked more than or equal to 8 hours
 //		if(workHour >= regularDailyWorkHour) 

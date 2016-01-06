@@ -43,10 +43,15 @@ public class DisplayMenu {
 					break;
 				case 3:
 					ShowEmployeeList();
+					System.out.println("Provide name of employee that you want to add/edit work hour");
 					AddWorkHour(FindEmployeeByName());
+					ShowEmployeeList();
 					break;
 				case 4:
-
+					System.out.println("Provide name of employee that you want to save");
+					int emp = FindEmployeeByName();
+					Serializer serial = new Serializer();
+					serial.serializeEmployeeData(empList.get(emp), empList.get(FindEmployeeByName()).getEmployeeName());
 					break;
 				case 5:
 
@@ -103,11 +108,27 @@ public class DisplayMenu {
 	
 	public static void AddWorkHour(int IndexOfTheEmp)
 	{
-		//System.out.println(s);
-		//sc.hasNext();
 		
-		empList.get(IndexOfTheEmp).toString();
+		Employee employee = empList.get(IndexOfTheEmp);
+	
 		
+		System.out.println("Please enter desired date in format of YYYY-MM-DD (Ex: 2015-11-28)");
+		String date = sc.next();
 		
+		System.out.println("Please enter work hour");
+		String workHour = sc.next();
+		
+		LocalDate editDate = LocalDate.parse(date);
+		
+		ArrayList<EmployeeWkHr> empWkHrList = employee.getListOfEmpWkHr();
+		
+		for (EmployeeWkHr empWkHr : empWkHrList)
+		{
+
+			if(empWkHr.getLocalDate().getDayOfYear() == (editDate.getDayOfYear()))
+			{
+				empWkHr.setWorkHour(Double.parseDouble(workHour));
+			}
+		}
 	}
 }

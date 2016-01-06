@@ -18,6 +18,7 @@ public class Test {
 		System.out.println("Please enter desired end date in format of YYYY-MM-DD (Ex: 2015-11-28)");
 		String end = sc.nextLine();
 		
+		
 		TimeWindow tw = new TimeWindow(start, end);
 		
 		ArrayList<LocalDate> timeList = tw.getListOfDates();
@@ -33,24 +34,24 @@ public class Test {
 			//workHrList.add(workHrObj);
 		}
 		
-		Serializer sz = new Serializer();
-		sz.serializeWorkHourData(workHrList);
-		
-		for (EmployeeWkHr wd : workHrList)
-		{
-			System.out.println(wd);
-		}
-		
-		
-		System.out.println("deserilizing...");
-		
-		Deserializer ds = new Deserializer();
-		LinkedList<EmployeeWkHr> workHrFromData = ds.deserialize();
-		
-		for (EmployeeWkHr wd : workHrFromData)
-		{
-			System.out.println(wd);
-		}
+//		Serializer sz = new Serializer();
+//		sz.serializeWorkHourData(workHrList);
+//		
+//		for (EmployeeWkHr wd : workHrList)
+//		{
+//			System.out.println(wd);
+//		}
+//		
+//		
+//		System.out.println("deserilizing...");
+//		
+//		Deserializer ds = new Deserializer();
+//		LinkedList<EmployeeWkHr> workHrFromData = ds.deserialize();
+//		
+//		for (EmployeeWkHr wd : workHrFromData)
+//		{
+//			System.out.println(wd);
+//		}
 		
 	}
 }

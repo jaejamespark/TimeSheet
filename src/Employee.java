@@ -1,8 +1,9 @@
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Employee {
+public class Employee implements Serializable {
 
 	private String employeeName;
 	ArrayList<LocalDate> listOfDays;
@@ -26,6 +27,7 @@ public class Employee {
 			employeeWkHr.setMonth(dates.getMonthValue());
 			employeeWkHr.setDate(dates.getDayOfMonth());
 			employeeWkHr.setDayOfWeek(dates.getDayOfWeek());
+			employeeWkHr.setLocalDate(dates);
 			
 			listOfEmpWkHr.add(employeeWkHr);
 		}

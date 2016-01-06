@@ -20,6 +20,7 @@ public class TimeWindow {
 
 	private LocalDate start;
 	private LocalDate end;
+	private LocalDate date;
 	ArrayList<LocalDate> totalDates;
 	
 	public TimeWindow(String startDateInput, String endDateInput)
@@ -36,6 +37,11 @@ public class TimeWindow {
 		this.start = LocalDate.parse(yearStartDate);
 		this.end = LocalDate.parse(yearEndDate);
 	}
+	
+//	public TimeWindow(String date)
+//	{
+//		this.date = LocalDate.parse(date);
+//	}
 	
 	public ArrayList<LocalDate> getListOfDates()
 	{
