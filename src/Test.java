@@ -20,7 +20,7 @@ public class Test {
 		
 		TimeWindow tw = new TimeWindow(start, end);
 		
-		LinkedList<LocalDate> timeList = tw.getListOfDates();
+		ArrayList<LocalDate> timeList = tw.getListOfDates();
 		LinkedList<EmployeeWkHr> workHrList = new LinkedList<EmployeeWkHr>();
 		
 		for (LocalDate ld : timeList)
@@ -29,8 +29,8 @@ public class Test {
 			double input = sc.nextDouble();
 			
 			
-			EmployeeWkHr workHrObj = new EmployeeWkHr("Jae", ld, input);
-			workHrList.add(workHrObj);
+			//EmployeeWkHr workHrObj = new EmployeeWkHr("Jae", ld, input);
+			//workHrList.add(workHrObj);
 		}
 		
 		Serializer sz = new Serializer();

@@ -19,83 +19,57 @@ public class EmployeeWkHr implements Serializable{
 
 	final private double regularDailyWorkHour = (long) 8;
 	
-	private String employeeName;
+	//private String employeeName;
 	private int year;
 	private int month;
 	private int date;
 	private DayOfWeek dayOfWeek;
 	private double workHour;
 	private double overTimeHour;
+	private LocalDate localDate;
 	
-	public EmployeeWkHr(String employeeName, LocalDate date, double workHour) 
+	public EmployeeWkHr() 
 	{
-		// input date must be in format of MM-dd-yyyy
-		//LocalDate workDate = LocalDate.parse(date);
-		this.employeeName = employeeName;
-		this.year = date.getYear();
-		this.month = date.getMonthValue();
-		this.date = date.getDayOfMonth();
-		this.dayOfWeek = date.getDayOfWeek();
-		
-		
-		// set work hour
-		this.workHour = workHour;
+		this.year = 0;
+		this.month = 0;
+		this.date = 0;
+		this.dayOfWeek = null;
+		this.workHour = 0;
 		
 		// calculate overtime if worked more than or equal to 8 hours
-		if(workHour >= regularDailyWorkHour) 
-		{
-			this.overTimeHour = workHour - regularDailyWorkHour;
-			
-		} else 
-		{
-			this.overTimeHour = 0;
-		}
+//		if(workHour >= regularDailyWorkHour) 
+//		{
+//			this.overTimeHour = workHour - regularDailyWorkHour;
+//			
+//		} else 
+//		{
+//			this.overTimeHour = 0;
+//		}
 	}
 	
-	public EmployeeWkHr(String employeeName) 
-	{
-		this.employeeName = employeeName;
-	}
 	
-	public EmployeeWkHr(String date, double workHour) 
-	{
-		// input date must be in format of MM-dd-yyyy
-		LocalDate workDate = LocalDate.parse(date);
-		
-		this.year = workDate.getYear();
-		this.month = workDate.getMonthValue();
-		this.date = workDate.getDayOfMonth();
-		
-		// set work hour
-		this.workHour = workHour;
-		
-		// calculate overtime if worked more than or equal to 8 hours
-		if(workHour >= regularDailyWorkHour) 
-		{
-			this.overTimeHour = workHour - regularDailyWorkHour;
-			
-		} else 
-		{
-			this.overTimeHour = 0;
-		}
-	}
-	
-	public String toString()
-	{
-		String a = "Employee Name: " + employeeName;
-		String b = " Year: "+ this.year + " Month: " + this.month +" Date: " + this.date + " " + this.dayOfWeek;
-		String c = " || Work HR " + this.workHour + " OT HR: "+ this.overTimeHour;
-		
-		return a + b + c;
-	}
-
-	public String getEmployeeName() {
-		return employeeName;
-	}
-
-	public void setEmployeeName(String employeeName) {
-		this.employeeName = employeeName;
-	}
+//	public EmployeeWkHr(String date, double workHour) 
+//	{
+//		// input date must be in format of MM-dd-yyyy
+//		LocalDate workDate = LocalDate.parse(date);
+//		
+//		this.year = workDate.getYear();
+//		this.month = workDate.getMonthValue();
+//		this.date = workDate.getDayOfMonth();
+//		
+//		// set work hour
+//		this.workHour = workHour;
+//		
+//		// calculate overtime if worked more than or equal to 8 hours
+//		if(workHour >= regularDailyWorkHour) 
+//		{
+//			this.overTimeHour = workHour - regularDailyWorkHour;
+//			
+//		} else 
+//		{
+//			this.overTimeHour = 0;
+//		}
+//	}
 
 	public int getYear() {
 		return year;
@@ -144,7 +118,23 @@ public class EmployeeWkHr implements Serializable{
 	public void setOverTimeHour(double overTimeHour) {
 		this.overTimeHour = overTimeHour;
 	}
+
+	public LocalDate getLocalDate() {
+		return localDate;
+	}
+
+	public void setLocalDate(LocalDate localDate) {
+		this.localDate = localDate;
+	}
 	
+	public String toString()
+	{
+		//String a = "Employee Name: " + employeeName;
+		String b = " Year: "+ this.year + " Month: " + this.month +" Date: " + this.date + " " + this.dayOfWeek;
+		String c = " \t Work HR " + this.workHour + " OT HR: "+ this.overTimeHour + "\n";
+		
+		return b + c;
+	}
 	
 	
 //	public static void main(String[] args)

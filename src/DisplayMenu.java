@@ -9,8 +9,9 @@ public class DisplayMenu {
 	static int userInput = 0;
 	static Scanner sc = new Scanner(System.in);
 	
-	static List<EmployeeWkHr> empList = new ArrayList<EmployeeWkHr>();
+	static List<Employee> empList = new ArrayList<Employee>();
 	static EmployeeWkHr empWkHr;
+	static Employee employee;
 	
 	public static void DisplayMenu()
 	{
@@ -58,16 +59,19 @@ public class DisplayMenu {
 	{
 		System.out.println("Provide new employee's name");
 		String name = sc.next();
-		empWkHr = new EmployeeWkHr(name);
-		empList.add(empWkHr);
+		System.out.println("Provide the year");
+		String year = sc.next();
+		
+		employee = new Employee(name, year);
+		empList.add(employee);
 	}
 	
 	public static void ShowEmployeeList()
 	{
 		System.out.println("[Employee List]");
-		for(EmployeeWkHr empWkHr : empList)
+		for(Employee employee : empList)
 		{
-			System.out.println(empWkHr.getEmployeeName());
+			System.out.println(employee);
 		}
 		System.out.print("\n");
 	}
@@ -78,9 +82,9 @@ public class DisplayMenu {
 		int index = 0;
 		int IndexOfTheEmp = 0;
 		
-		for(EmployeeWkHr empWkHr : empList)
+		for(Employee employee : empList)
 		{
-			String employeeName = empWkHr.getEmployeeName();
+			String employeeName = employee.getEmployeeName();
 			if (employeeName.equals(name))
 			{
 				IndexOfTheEmp = index;
@@ -99,29 +103,11 @@ public class DisplayMenu {
 	
 	public static void AddWorkHour(int IndexOfTheEmp)
 	{
-		System.out.println("Please enter desired start date in format of YYYY-MM-DD (Ex: 2015-11-28)");
-		String start = sc.nextLine();
-		System.out.println("Please enter desired end date in format of YYYY-MM-DD (Ex: 2015-11-28)");
-		String end = sc.nextLine();
+		//System.out.println(s);
+		//sc.hasNext();
 		
-		TimeWindow tw = new TimeWindow(start, end);
+		empList.get(IndexOfTheEmp).toString();
 		
-		LinkedList<LocalDate> timeList = tw.getListOfDates();
-		
-		// ????
-		LinkedList<EmployeeWkHr> workHrList = new LinkedList<EmployeeWkHr>();
-		
-		EmployeeWkHr workHour = empList.get(IndexOfTheEmp);
-		
-		for (LocalDate ld : timeList)
-		{
-			System.out.println("Enter work hour for " + ld.toString());
-			double input = sc.nextDouble();
-			
-			
-			EmployeeWkHr workHrObj = new EmployeeWkHr("Jae", ld, input);
-			workHrList.add(workHrObj);
-		}
 		
 	}
 }
